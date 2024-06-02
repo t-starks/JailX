@@ -1,10 +1,10 @@
 name: JailX
 main: JailX\Main
-icon: icon.png
 version: 1.0.0
 api: 5.0.0
 author: T.Stark
 description: Un plugin para administrar una cárcel en el servidor.
+icon: icon.png
 commands:
   jail:
     description: "Arresta a un jugador sospechoso"
