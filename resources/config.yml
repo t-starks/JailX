@@ -1,5 +1,4 @@
 # Configuración de JailX
-
 jail-message: "§c¡Has sido enviado a la cárcel!"
 unjail-message: "§a¡Has sido liberado de la cárcel!"
 welcome-message: "§eBienvenido a la cárcel"

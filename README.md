@@ -1,4 +1,4 @@
-# JailX ![JailX Icon](icon.png)
+# JailX ![Icon](icon.png)
 JailX es un plugin para PocketMine-MP que permite a los administradores gestionar celdas de cárcel para los jugadores dentro del servidor. Este plugin ofrece varias características útiles para la administración de jugadores y el mantenimiento de la disciplina en el servidor.
 
 ## Requisitos

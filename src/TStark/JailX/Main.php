@@ -1,6 +1,6 @@
 <?php
 
-namespace JailX;
+namespace TStark\JailX\Main;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
