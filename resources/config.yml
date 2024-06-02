@@ -1,0 +1,13 @@
+# Configuración de JailX
+
+jail-message: "§c¡Has sido enviado a la cárcel!"
+unjail-message: "§a¡Has sido liberado de la cárcel!"
+welcome-message: "§eBienvenido a la cárcel"
+welcome-subtitle: "§6Suerte en tu estancia"
+
+# Posición de la cárcel
+jail-position:
+  x: 0
+  y: 0
+  z: 0
+  level: "world"
