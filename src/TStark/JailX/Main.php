@@ -22,10 +22,10 @@ class Main extends PluginBase {
     public function onEnable(): void {
         $this->saveDefaultConfig();
         $this->jailPosition = $this->getJailPositionFromConfig();
-        $this->jailMessage = $this->getConfig()->get("jail-message", "§c¡Has sido enviado a la cárcel!");
-        $this->unjailMessage = $this->getConfig()->get("unjail-message", "§a¡Has sido liberado de la cárcel!");
-        $this->welcomeMessage = $this->getConfig()->get("welcome-message", "§eBienvenido a la cárcel");
-        $this->welcomeSubtitle = $this->getConfig()->get("welcome-subtitle", "§6Suerte en tu estancia");
+        $this->jailMessage = $this->getConfig()->get("jail-message", "§cYou have been sent to jail!");
+        $this->unjailMessage = $this->getConfig()->get("unjail-message", "§aYou have been released from jail!");
+        $this->welcomeMessage = $this->getConfig()->get("welcome-message", "§eWelcome to jail");
+        $this->welcomeSubtitle = $this->getConfig()->get("welcome-subtitle", "§6Good luck during your stay");
         $this->loadJailedPlayers();
     }
 
@@ -58,7 +58,7 @@ class Main extends PluginBase {
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         if (!$sender instanceof Player) {
-            $sender->sendMessage(TextFormat::RED . "Este comando solo se puede usar en el juego.");
+            $sender->sendMessage(TextFormat::RED . "This command can only be used in-game.");
             return false;
         }
 
@@ -69,15 +69,15 @@ class Main extends PluginBase {
                         $target = $this->getServer()->getPlayerByPrefix($args[0]);
                         if ($target instanceof Player) {
                             $this->sendToJail($target);
-                            $sender->sendMessage(TextFormat::GREEN . "El jugador {$target->getName()} fue enviado a la cárcel.");
+                            $sender->sendMessage(TextFormat::GREEN . "Player {$target->getName()} was sent to jail.");
                         } else {
-                            $sender->sendMessage(TextFormat::RED . "El jugador {$args[0]} no está en línea.");
+                            $sender->sendMessage(TextFormat::RED . "Player {$args[0]} is not online.");
                         }
                     } else {
-                        $sender->sendMessage(TextFormat::RED . "Uso: /jail <nick>");
+                        $sender->sendMessage(TextFormat::RED . "Usage: /jail <nick>");
                     }
                 } else {
-                    $sender->sendMessage(TextFormat::RED . "No tienes permiso para usar este comando.");
+                    $sender->sendMessage(TextFormat::RED . "You do not have permission to use this command.");
                 }
                 return true;
             case "setjail":
@@ -85,9 +85,9 @@ class Main extends PluginBase {
                     $this->jailPosition = $sender->getPosition();
                     $this->getConfig()->set("jail-position", ["x" => $this->jailPosition->getX(), "y" => $this->jailPosition->getY(), "z" => $this->jailPosition->getZ(), "level" => $this->jailPosition->getWorld()->getFolderName()]);
                     $this->getConfig()->save();
-                    $sender->sendMessage(TextFormat::GREEN . "La posición de la cárcel se estableció correctamente.");
+                    $sender->sendMessage(TextFormat::GREEN . "Jail position set successfully.");
                 } else {
-                    $sender->sendMessage(TextFormat::RED . "No tienes permiso para usar este comando.");
+                    $sender->sendMessage(TextFormat::RED . "You do not have permission to use this command.");
                 }
                 return true;
             case "unjail":
@@ -96,15 +96,15 @@ class Main extends PluginBase {
                         $target = $this->getServer()->getPlayerByPrefix($args[0]);
                         if ($target instanceof Player) {
                             $this->releaseFromJail($target);
-                            $sender->sendMessage(TextFormat::GREEN . "El jugador {$target->getName()} fue liberado de la cárcel.");
+                            $sender->sendMessage(TextFormat::GREEN . "Player {$target->getName()} was released from jail.");
                         } else {
-                            $sender->sendMessage(TextFormat::RED . "El jugador {$args[0]} no está en línea.");
+                            $sender->sendMessage(TextFormat::RED . "Player {$args[0]} is not online.");
                         }
                     } else {
-                        $sender->sendMessage(TextFormat::RED . "Uso: /unjail <nick>");
+                        $sender->sendMessage(TextFormat::RED . "Usage: /unjail <nick>");
                     }
                 } else {
-                    $sender->sendMessage(TextFormat::RED . "No tienes permiso para usar este comando.");
+                    $sender->sendMessage(TextFormat::RED . "You do not have permission to use this command.");
                 }
                 return true;
             default:
