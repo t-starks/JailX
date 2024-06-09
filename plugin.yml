@@ -3,27 +3,27 @@ main: TStark\JailX\Main
 version: 1.0.0
 api: 5.0.0
 author: TStark
-description: Un plugin para administrar una cárcel en el servidor.
+description: A plugin to manage a jail on the server.
 commands:
   jail:
-    description: "Arresta a un jugador sospechoso"
+    description: "Arrest a suspicious player"
     usage: "/jail <nick>"
     permission: "jailx.command.jail"
   setjail:
-    description: "Establece la posición de la cárcel"
+    description: "Set the position of the jail"
     usage: "/setjail"
     permission: "jailx.command.setjail"
   unjail:
-    description: "Libera a un jugador de la cárcel"
-    usage: "/unjail <jugador>"
+    description: "Release a player from jail"
+    usage: "/unjail <player>"
     permission: "jailx.command.unjail"
 permissions:
   jailx.command.jail:
     default: op
-    description: Permite arrestar a un jugador sospechoso.
+    description: Allows you to arrest a suspicious player.
   jailx.command.setjail:
     default: op
-    description: Permite establecer la posición de la cárcel.
+    description: Allows you to set the position of the jail.
   jailx.command.unjail:
     default: op
-    description: Permite liberar a un jugador de la cárcel.
+    description: Allows you to free a player from jail.
