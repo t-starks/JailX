@@ -22,7 +22,7 @@ JailX is a plugin for PocketMine-MP that allows administrators to manage jail ce
   </tr>
 </table>
 
-##Requirements
+## Requirements
 
 - PocketMine-MP version 5.0.0 or higher.
 
