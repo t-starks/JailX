@@ -2,8 +2,10 @@ name: JailX
 main: TStark\JailX\Main
 version: 1.0.0
 api: 5.0.0
-author: TStark
-description: A plugin to manage a jail on the server.
+author: §bT. Stark
+description: §6A plugin to manage a jail on the server.
+website: §ahttps://mcpetools.surge.sh
+
 commands:
   jail:
     description: "Arrest a suspicious player"
