@@ -38,6 +38,23 @@ JailX is a plugin for PocketMine-MP that allows administrators to manage jail ce
 - `/unjail <player>`: Release a player from jail.
 - `/setjail`: Set the cell point.
 
+##  Permissions
+To manage plugin commands and actions, the following permissions are required:
+
+- `jailx.command.jail`:
+Default: op
+Description: Allows you to imprison a suspicious player.
+
+- `jailx.command.setjail`:
+Default: op
+Description: Allows you to configure the position of the jail.
+
+- `jailx.command.unjail`:
+Default: op
+Description: Allows you to free a player from jail.
+
+Be sure to assign these permissions to the appropriate groups on your server so that administrators and moderators can manage jails correctly.
+
 ### 🌐 Web Sites:
 - [<img src="https://pocketmineschool.netlify.app/favicon.ico" alt="Pocket Mine School" width="40" height="40"/> Pocket Mine School](https://pocketmineschool.netlify.app/)
 - [<img src="https://mcpetools.surge.sh/favicon.ico" alt="MCPETools" width="40" height="40"/> MCPETools](https://mcpetools.surge.sh/)
