@@ -1,13 +1,22 @@
 # Configuración de JailX
+# Developed By: T. Stark
 
-jail-message: "§c¡Has sido enviado a la cárcel!"
-unjail-message: "§a¡Has sido liberado de la cárcel!"
-welcome-message: "§eBienvenido a la cárcel"
-welcome-subtitle: "§6Suerte en tu estancia"
-
-# Posición de la cárcel
+jail-message: "§cYou have been sent to jail!"
+unjail-message: "§aYou have been released from jail!"
+welcome-message: "§eWelcome to jail"
+welcome-subtitle: "§6Good luck during your stay"
 jail-position:
   x: 0
   y: 0
   z: 0
   level: "world"
+blocked-commands:
+  - "hub"
+  - "spawn"
+  - "lobby"
+  - "tp"
+  - "tpa"
+  - "warp"
+  - "wild"
+  - "home"
+  - "f home"
