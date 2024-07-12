@@ -1,5 +1,6 @@
 name: JailX
 main: TStark\JailX\Main
+<<<<<<< HEAD
 version: 2.0.0
 api: 5.0.0
 author: §bT. Stark
@@ -7,8 +8,21 @@ description: §6Un plugin para administrar una cárcel en el servidor.
 website: §ahttps://mcpetools.surge.sh
 
 commands:
+=======
+version: 1.0.0
+api: 5.0.0
+author: §bT. Stark
+description: §6A plugin to manage a jail on the server.
+website: §ahttps://mcpetools.surge.sh
+
+commands:
+  jail:
+    description: "Arrest a suspicious player"
+    usage: "/jail <nick>"
+    permission: "jailx.command.jail"
+>>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d
   setjail:
-    description: "Establece la posición de la cárcel"
+    description: "Set the position of the jail"
     usage: "/setjail"
     permission: "jailx.command.setjail"
   jail:
@@ -16,8 +30,13 @@ commands:
     usage: "/jail <nick> [duration]"
     permission: "jailx.command.jail"
   unjail:
+<<<<<<< HEAD
     description: "Libera a un jugador de la cárcel"
     usage: "/unjail <nick>"
+=======
+    description: "Release a player from jail"
+    usage: "/unjail <player>"
+>>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d
     permission: "jailx.command.unjail"
   jaillist:
     description: "Lista a los jugadores en la cárcel"
@@ -29,6 +48,7 @@ commands:
     permission: "jailx.command.jailstatus"
 
 permissions:
+<<<<<<< HEAD
   jailx.command.setjail:
     default: op
     description: Permite establecer la posición de la cárcel.
@@ -44,3 +64,14 @@ permissions:
   jailx.command.jailstatus:
     default: op
     description: Muestra el estado de un jugador en la cárcel.
+=======
+  jailx.command.jail:
+    default: op
+    description: Allows you to arrest a suspicious player.
+  jailx.command.setjail:
+    default: op
+    description: Allows you to set the position of the jail.
+  jailx.command.unjail:
+    default: op
+    description: Allows you to free a player from jail.
+>>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d

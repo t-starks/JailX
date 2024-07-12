@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Configuración de JailX
 # Developed By: T. Stark
 
@@ -5,6 +6,15 @@ jail-message: "§cYou have been sent to jail!"
 unjail-message: "§aYou have been released from jail!"
 welcome-message: "§eWelcome to jail"
 welcome-subtitle: "§6Good luck during your stay"
+=======
+# JailX Configuration
+jail-message: "§cYou have been sent to jail!"
+unjail-message: "§aYou have been released from jail!"
+welcome-message: "§eWelcome to jail"
+welcome-subtitle: "§6Luck in your stay"
+
+# Jail position
+>>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d
 jail-position:
   x: 0
   y: 0
