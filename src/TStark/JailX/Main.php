@@ -32,10 +32,7 @@ class Main extends PluginBase implements Listener {
         $this->unjailMessage = $this->getConfig()->get("unjail-message", "§aYou have been released from jail!");
         $this->welcomeMessage = $this->getConfig()->get("welcome-message", "§eWelcome to jail");
         $this->welcomeSubtitle = $this->getConfig()->get("welcome-subtitle", "§6Good luck during your stay");
-<<<<<<< HEAD
-        $this->blockedCommands = $this->getConfig()->get("blocked-commands", ["hub", "lobby", "tp", "tpa", "spawn"]);
-=======
->>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d
+        $this->blockedCommands = $this->getConfig()->get("blocked-commands", ["hub", "lobby", "tp", "tpa", "spawn", "f home", "warp", "wild", "home"]);
         $this->loadJailedPlayers();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
@@ -79,22 +76,14 @@ class Main extends PluginBase implements Listener {
                     if (count($args) >= 1) {
                         $target = $this->getServer()->getPlayerByPrefix($args[0]);
                         if ($target instanceof Player) {
-<<<<<<< HEAD
                             $duration = count($args) >= 2 ? intval($args[1]) : 0;
                             $this->sendToJail($target, $duration);
-=======
-                            $this->sendToJail($target);
->>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d
                             $sender->sendMessage(TextFormat::GREEN . "Player {$target->getName()} was sent to jail.");
                         } else {
                             $sender->sendMessage(TextFormat::RED . "Player {$args[0]} is not online.");
                         }
                     } else {
-<<<<<<< HEAD
                         $sender->sendMessage(TextFormat::RED . "Usage: /jail <nick> [duration]");
-=======
-                        $sender->sendMessage(TextFormat::RED . "Usage: /jail <nick>");
->>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d
                     }
                 } else {
                     $sender->sendMessage(TextFormat::RED . "You do not have permission to use this command.");
@@ -125,7 +114,6 @@ class Main extends PluginBase implements Listener {
                     }
                 } else {
                     $sender->sendMessage(TextFormat::RED . "You do not have permission to use this command.");
-<<<<<<< HEAD
                 }
                 return true;
             case "jailstatus":
@@ -156,8 +144,6 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage(TextFormat::GREEN . $jailedList);
                 } else {
                     $sender->sendMessage(TextFormat::RED . "You do not have permission to use this command.");
-=======
->>>>>>> ae39fb60dc4cc788647dcd7f972ac58c7b0f241d
                 }
                 return true;
             default:
