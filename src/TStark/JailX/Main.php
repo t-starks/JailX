@@ -12,7 +12,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\world\Position;
 use pocketmine\Server;
 use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerCommandPreprocessEvent;
+use pocketmine\event\server\CommandEvent;
 use pocketmine\scheduler\ClosureTask;
 
 class Main extends PluginBase implements Listener {
@@ -151,9 +151,12 @@ class Main extends PluginBase implements Listener {
         }
     }
 
-    public function onPlayerCommandPreprocess(PlayerCommandPreprocessEvent $event): void {
-        $player = $event->getPlayer();
-        $command = strtolower(explode(" ", $event->getMessage())[0]);
+    public function onPlayerCommand(CommandEvent $event): void {
+        $player = $event->getSender();
+        $command = strtolower($event->getCommand());
+    
+        if (!$player instanceof Player) return;
+    
         if (isset($this->jailedPlayers[$player->getName()]) && in_array($command, $this->blockedCommands)) {
             $player->sendMessage(TextFormat::RED . "You cannot use this command while in jail.");
             $event->cancel();
@@ -169,28 +172,40 @@ class Main extends PluginBase implements Listener {
             "releaseTime" => $duration > 0 ? time() + $duration : null
         ];
         if ($this->jailPosition instanceof Position) {
-            $player->teleport($this->jailPosition);
-            $player->sendMessage($this->jailMessage);
-            $player->sendTitle($this->welcomeMessage, $this->welcomeSubtitle);
+            if ($player->isOnline()) {
+                $player->teleport($this->jailPosition);
+                $player->sendMessage($this->jailMessage);
+                $player->sendTitle($this->welcomeMessage, $this->welcomeSubtitle);
+            }
         }
         if ($duration > 0) {
             $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function () use ($player): void {
-                $this->releaseFromJail($player);
+                if ($player->isOnline()) {
+                    $this->releaseFromJail($player);
+                } else {
+                    // Manejo de caso cuando el jugador no está en línea
+                    unset($this->jailedPlayers[$player->getName()]);
+                }
             }), $duration * 20);
         }
     }
-
+    
     private function releaseFromJail(Player $player): void {
         if (isset($this->jailedPlayers[$player->getName()])) {
             $positionData = $this->jailedPlayers[$player->getName()];
             $level = $this->getServer()->getWorldManager()->getWorldByName($positionData["level"]);
             if ($level !== null) {
-                $player->teleport(new Position($positionData["x"], $positionData["y"], $positionData["z"], $level));
+                if ($player->isOnline()) {
+                    $player->teleport(new Position($positionData["x"], $positionData["y"], $positionData["z"], $level));
+                    $player->sendMessage($this->unjailMessage);
+                }
             }
             unset($this->jailedPlayers[$player->getName()]);
         } else {
-            $player->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
+            if ($player->isOnline()) {
+                $player->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
+                $player->sendMessage($this->unjailMessage);
+            }
         }
-        $player->sendMessage($this->unjailMessage);
-    }
+    }    
 }
